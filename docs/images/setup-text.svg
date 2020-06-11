@@ -3,7 +3,7 @@
     <title>Group 9</title>
     <defs>
         <filter id="filter-1">
-            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.222883 0 0 0 0 0.194891 0 0 0 0 0.153640 0 0 0 1.000000 0"></feColorMatrix>
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.106459 0 0 0 0 0.099002 0 0 0 0 0.088012 0 0 0 1.000000 0"></feColorMatrix>
         </filter>
         <polygon id="path-2" points="0 0.554752053 52.8726692 0.554752053 52.8726692 51.6755337 0 51.6755337"></polygon>
         <polygon id="path-4" points="0 52.3239741 277 52.3239741 277 0.323974082 0 0.323974082"></polygon>
