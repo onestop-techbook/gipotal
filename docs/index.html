@@ -2,24 +2,84 @@
 <html lang="ja">
 
 <head>
+  <title> gipotal | 設営準備中 </title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
+    html {
+      font-size: 10px;
+    }
+
     body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       background-image: url("images/background.png");
+      background-size: 120px;
+    }
+
+    footer {
+      font-size: 1.2rem;
+      opacity: 0.6;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    #logo {
+      width: 140px;
+      margin: 8px auto 48px;
+      display: block;
+    }
+
+    .container {
+      width: 100%;
+      font-size: 1.6rem;
+      margin-bottom: 3rem;
+      text-align: center;
+      padding: 0 20px;
+      max-width: 600px;
+    }
+
+    .description {
+      margin-bottom: 36px;
+    }
+
+    .btn {
+      background-color: #1A576D;
+      border-radius: 40px;
+      padding: 16px 48px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      display: inline-block;
+    }
+
+    .btn:hover,
+    .btn:active {
+      background-color: #24444F;
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
+  <main class="container">
+    <img src="images/logo.svg" id='logo' alt="gipotalロゴ">
     <img src="images/setup.png" alt="設営準備中画像">
-    <img src="images/setup-text.svg" alt="設営準備中文字">
-    <p>
-      技術同人誌のポータルサイトを作りたい、という思いつきを実現すべく設営をすすめております。by <a href="https://twitter.com/oyakata2438">oyakata2438</a>
+    <h1>
+      <img src="images/setup-text.svg" alt="設営準備中文字">
+    </h1>
+    <p class='description'>
+      技術同人誌のポータルサイトを作りたい。<br>そんな思いつきを実現すべく設営をすすめております。
     </p>
-    <a href="https://note.com/oyakata2438/n/nac549aac8cde">
+    <a class='btn' href="https://note.com/oyakata2438/n/nac549aac8cde">
       計画はこちら
     </a>
-  </div>
+  </main>
+  <footer>
+    &copy; 2020 親方Project
+  </footer>
 </body>
 
 </html>
