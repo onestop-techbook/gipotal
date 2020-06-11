@@ -10,12 +10,14 @@
     }
 
     body {
+      margin: 0;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       background-image: url("images/background.png");
       background-size: 120px;
+      width: 100%;
     }
 
     footer {
@@ -27,9 +29,13 @@
       max-width: 100%;
     }
 
+    h1 {
+      margin-bottom: 0;
+    }
+
     #logo {
       width: 140px;
-      margin: 8px auto 48px;
+      margin: 16px auto 48px;
       display: block;
     }
 
@@ -38,11 +44,13 @@
       font-size: 1.6rem;
       margin-bottom: 3rem;
       text-align: center;
-      padding: 0 20px;
+      padding: 0 16px;
       max-width: 600px;
+      box-sizing: border-box;
     }
 
     .description {
+      margin-top: 8px;
       margin-bottom: 36px;
     }
 
