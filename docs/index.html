@@ -34,6 +34,22 @@
       margin-bottom: 0;
     }
 
+    @keyframes main-image {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    #setupImg {
+      animation: main-image 5s infinite ease-in-out;
+    }
+
     #logo {
       width: 140px;
       margin: 16px auto 48px;
@@ -75,7 +91,7 @@
 <body>
   <main class="container">
     <img src="images/logo.svg" id='logo' alt="gipotalロゴ">
-    <img src="images/setup.png" alt="設営準備中画像">
+    <img src="images/setup.png" id='setupImg' alt="設営準備中画像">
     <h1>
       <img src="images/setup-text.svg" alt="設営準備中文字">
     </h1>
