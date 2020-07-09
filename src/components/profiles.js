@@ -14,7 +14,7 @@ const Profiles = () => {
   const { loading, error, data } = useQuery(OUR_FIRST_QUERY)
 
   if (loading) return <p>loading</p>
-  if (error) return <p>{error.toString()}</p>
+  if (error) return <p>ダメです！:{error.toString()}</p>
   return <div>
     {
       data.profile.map(profile => <Profile key={profile.id} profile={profile}/>)
