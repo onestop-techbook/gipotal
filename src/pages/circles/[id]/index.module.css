@@ -8,6 +8,10 @@
     border-radius: 50px;
 }
 
+.button + .button {
+    margin-left: 10px;
+}
+
 .blackButton {
     color: #fff;
     background-color: #000;
@@ -17,4 +21,58 @@
     color: #000;
     background-color: #fff;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
+}
+
+.header {
+    background-image: url("/images/background.png");
+    background-size: cover;
+}
+
+.headerNav {
+    width: 100%;
+    max-width: 980px;
+    display: flex;
+    align-items: center;
+    margin: 0px auto;
+    padding: 16px;
+
+}
+
+.circleName {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 37px;
+    padding-top: 74px;
+    padding-bottom: 34px;
+    margin: auto;
+    text-align: center;
+}
+
+.logoWrapper {
+    padding: 12px 0;
+    margin-right: auto;
+    display: inline-block;
+}
+
+.logo {
+    height: 32px;
+    position: relative;
+    left: -2px;
+}
+
+.mainContainer{
+    display : flex;
+    max-width: 980px;
+    margin : 48px auto;
+    padding : 0 16px;
+}
+
+.circleContent{
+    flex-grow: 1;
+}
+
+.circleSide{
+    width: 310px;
+    min-width: 310px;
 }
