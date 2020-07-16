@@ -3,7 +3,7 @@ import { useRouter } from 'next/router' // useRouter という単体の関数を
 import { NextPage } from 'next' // NextPage という単体の型を取ってくる
 import Link from 'next/link'
 import styles from './index.module.css'
-import {Item} from '@/components/item-cell'
+import { Item, ItemProps} from '@/components/item-cell'
 
 const Header: React.FC = () => {
     return <header className={styles.header}>
@@ -40,6 +40,38 @@ const Main: React.FC<MainProps>  = ({circleDesciption}) => {
             publishedAt: new Date(),
             imagePath: '/images/circle_item.png',
             path: '/hoge'
+        },
+        {
+            category: 'ウェブアプリ',
+            title: 'Slack App開発ガイド',
+            eventName: '技術書典6',
+            publishedAt: new Date(),
+            imagePath: '/images/circle_item.png',
+            path: '/hoge'
+        },
+        {
+            category: 'ウェブアプリ',
+            title: 'Slack App開発ガイド',
+            eventName: '技術書典6',
+            publishedAt: new Date(),
+            imagePath: '/images/circle_item.png',
+            path: '/hoge'
+        },
+        {
+            category: 'ウェブアプリ',
+            title: 'Slack App開発ガイド',
+            eventName: '技術書典6',
+            publishedAt: new Date(),
+            imagePath: '/images/circle_item.png',
+            path: '/hoge'
+        },
+        {
+            category: 'ウェブアプリ',
+            title: 'Slack App開発ガイド',
+            eventName: '技術書典6',
+            publishedAt: new Date(),
+            imagePath: '/images/circle_item.png',
+            path: '/hoge'
         }
     ]
     return <main className={styles.mainContainer}>
@@ -49,9 +81,8 @@ const Main: React.FC<MainProps>  = ({circleDesciption}) => {
             </div>
             <h2 className={styles.itemHeader}>頒布物</h2>
             <div className={styles.itemContainer}>
-                <ul>
-                {items.map(item => <li><Item {...item}/></li>)}
-
+                <ul className={styles.itemList}>
+                    {items.map(item => <li className={styles.item}><Item {...item}/></li>)}
                 </ul>
             </div>
         </div>

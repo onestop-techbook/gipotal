@@ -16,7 +16,9 @@ export const Item: React.FC<ItemProps> = ({category, imagePath, title, eventName
     return <div>
         <Link href={path}>
             <a>
-                <img className={styles.image} src={imagePath} />
+                <div className={styles.cover}>
+                    <img className={styles.coverImage} src={imagePath} />
+                </div>
                 <div className={styles.category}>{category}</div>
                 <div className={styles.title}>{title}</div>
                 <div className={styles.eventName}>{published}</div>

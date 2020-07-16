@@ -35,7 +35,6 @@
     align-items: center;
     margin: 0px auto;
     padding: 16px;
-
 }
 
 .circleName {
@@ -75,4 +74,14 @@
 .circleSide{
     width: 310px;
     min-width: 310px;
+}
+
+.itemList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.item {
+    margin-bottom: 32px;
 }
