@@ -7,8 +7,8 @@ type Props = {
 }
 
 export const ItemBanner: React.FC<Props> = ({ text, startAt, endAt }) => {
-    return <div>
-        <div>{startAt} - {endAt}</div>
-        <div>{text}</div>
+    return <div className={styles.container}>
+        <div className={styles.date}>{startAt} - {endAt}</div>
+        <div className={styles.text}>{text}</div>
     </div>
 } 

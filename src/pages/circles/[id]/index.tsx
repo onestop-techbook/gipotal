@@ -121,6 +121,14 @@ const Main: React.FC<MainProps> = ({ circleDesciption }) => {
           <Badge value={events.length} />
         </h2>
         {events.map(event => <ItemBanner {...event}/>)}
+        <h2 className={styles.heading}>
+          <span className={styles.headingLabel}>関連リンク</span>
+        </h2>
+        <ul className={styles.linkList}>
+          <li><a href="https://twitter.com/oyakata2438">Twitter</a></li>
+          <li><a href="https://note.com/oyakata2438/n/nac549aac8cde">サークル公式ページ</a></li>
+          <li><a href="https://oyakata.booth.pm/">BOOTH</a></li>
+        </ul>
       </div>
     </main>
   );
