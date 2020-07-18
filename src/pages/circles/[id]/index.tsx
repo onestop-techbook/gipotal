@@ -100,15 +100,15 @@ const Main: React.FC<MainProps> = ({ circleDesciption }) => {
   return (
     <main className={styles.mainContainer}>
       <div className={styles.circleContent}>
-        <div>{circleDesciption}</div>
-        <h2 className={styles.itemHeader}>
-          <span className={styles.hederLabel}>頒布物</span>{" "}
+        <p className={styles.circleDescription}>{circleDesciption}</p>
+        <h2 className={styles.heading}>
+          <span className={styles.headingLabel}>頒布物</span>{" "}
           <Badge value={items.length} />
         </h2>
         <div className={styles.itemContainer}>
           <ul className={styles.itemList}>
-            {items.map((item) => (
-              <li className={styles.item}>
+            {items.map((item, index) => (
+              <li className={styles.item} key={index}>
                 <Item {...item} />
               </li>
             ))}
@@ -116,8 +116,8 @@ const Main: React.FC<MainProps> = ({ circleDesciption }) => {
         </div>
       </div>
       <div className={styles.circleSide}>
-      <h2 className={styles.itemHeader}>
-          <span className={styles.hederLabel}>参加イベント</span>{" "}
+        <h2 className={styles.heading}>
+          <span className={styles.headingLabel}>参加イベント</span>{" "}
           <Badge value={events.length} />
         </h2>
         {events.map(event => <ItemBanner {...event}/>)}

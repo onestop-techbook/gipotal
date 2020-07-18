@@ -30,7 +30,7 @@
 
 .headerNav {
   width: 100%;
-  max-width: 980px;
+  max-width: var(--page-width);
   display: flex;
   align-items: center;
   margin: 0px auto;
@@ -48,6 +48,10 @@
   text-align: center;
 }
 
+.circleDesciption {
+  line-height: 1.6;
+}
+
 .logoWrapper {
   padding: 12px 0;
   margin-right: auto;
@@ -61,10 +65,11 @@
 }
 
 .mainContainer {
+  --container-padding: 16px;
   display: flex;
-  max-width: 980px;
+  max-width: calc(var(--page-width) + var(--container-padding) * 2);
   margin: 48px auto;
-  padding: 0 16px;
+  padding: 0 var(--container-padding);
 }
 
 .circleContent {
@@ -74,6 +79,7 @@
 .circleSide {
   width: 310px;
   min-width: 310px;
+  margin-left: 36px;
 }
 
 .itemList {
@@ -86,11 +92,18 @@
   margin-bottom: 32px;
 }
 
-.itemHeader {
+.heading {
   display: flex;
   align-items: center;
+  margin: 32px 0 16px;
 }
 
-.hederLabel {
+.heading:first-child {
+  margin-top: 0;
+}
+
+.headingLabel {
   margin-right: 8px;
+  font-size: 24px;
+  font-weight: 600;
 }

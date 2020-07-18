@@ -1,4 +1,6 @@
-import '../styles.css'
+import 'minireset.css'
+import '../variables.css'
+import '../base.css'
 
 // This default export is required in a new `pages/_app.js` file.
 export default function MyApp({ Component, pageProps }) {
