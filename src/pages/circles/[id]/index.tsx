@@ -2,12 +2,15 @@ import React from "react"; // React というでかいすべてを取ってく�
 import { useRouter } from "next/router"; // useRouter という単体の関数を取ってくる
 import { NextPage } from "next"; // NextPage という単体の型を取ってくる
 import Link from "next/link";
-import styles from "./index.module.css";
-import { Item, ItemProps } from "@/components/item-cell";
+
+import { ItemCell } from "@/components/item-cell";
 import { Badge } from "@/components/badge";
 import { ItemBanner } from "@/components/item-banner";
+import { Item } from "@/types";
 
-type ItemBannerProps = React.ComponentProps<typeof ItemBanner>
+import styles from "./index.module.css";
+
+type ItemBannerProps = React.ComponentProps<typeof ItemBanner>;
 
 const Header: React.FC = () => {
   return (
@@ -34,11 +37,71 @@ const Header: React.FC = () => {
   );
 };
 
+type ContentProps = {
+  items: Item[];
+  circleDesciption: string;
+};
+const Content: React.FC<ContentProps> = ({ circleDesciption, items }) => {
+  return (
+    <div className={styles.circleContent}>
+      <p className={styles.circleDescription}>{circleDesciption}</p>
+      <h2 className={styles.heading}>
+        <span className={styles.headingLabel}>頒布物</span>{" "}
+        <Badge value={items.length} />
+      </h2>
+      <div className={styles.itemContainer}>
+        <ul className={styles.itemList}>
+          {items.map((item, index) => (
+            <li className={styles.item} key={index}>
+              <ItemCell {...item} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+type SideProps = {
+  events: ItemBannerProps[];
+};
+
+const Side: React.FC<SideProps> = ({ events }) => {
+  return (
+    <div className={styles.circleSide}>
+      <h2 className={styles.heading}>
+        <span className={styles.headingLabel}>参加イベント</span>{" "}
+        <Badge value={events.length} />
+      </h2>
+      {events.map((event) => (
+        <ItemBanner {...event} />
+      ))}
+      <h2 className={styles.heading}>
+        <span className={styles.headingLabel}>関連リンク</span>
+      </h2>
+      <ul className={styles.linkList}>
+        <li>
+          <a href="https://twitter.com/oyakata2438">Twitter</a>
+        </li>
+        <li>
+          <a href="https://note.com/oyakata2438/n/nac549aac8cde">
+            サークル公式ページ
+          </a>
+        </li>
+        <li>
+          <a href="https://oyakata.booth.pm/">BOOTH</a>
+        </li>
+      </ul>
+    </div>
+  );
+};
+
 type MainProps = {
   circleDesciption: string;
 };
+
 const Main: React.FC<MainProps> = ({ circleDesciption }) => {
-  const items: ItemProps[] = [
+  const items: Item[] = [
     {
       category: "ウェブアプリ",
       title: "Slack App開発ガイド",
@@ -80,7 +143,7 @@ const Main: React.FC<MainProps> = ({ circleDesciption }) => {
       path: "/hoge",
     },
   ];
-  const events:ItemBannerProps[] = [
+  const events: ItemBannerProps[] = [
     {
       text: "技術書典9",
       startAt: "2019.09.12",
@@ -95,41 +158,12 @@ const Main: React.FC<MainProps> = ({ circleDesciption }) => {
       text: "技術書典7",
       startAt: "2019.09.12",
       endAt: "2019.09.12",
-    } 
-  ]
+    },
+  ];
   return (
     <main className={styles.mainContainer}>
-      <div className={styles.circleContent}>
-        <p className={styles.circleDescription}>{circleDesciption}</p>
-        <h2 className={styles.heading}>
-          <span className={styles.headingLabel}>頒布物</span>{" "}
-          <Badge value={items.length} />
-        </h2>
-        <div className={styles.itemContainer}>
-          <ul className={styles.itemList}>
-            {items.map((item, index) => (
-              <li className={styles.item} key={index}>
-                <Item {...item} />
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-      <div className={styles.circleSide}>
-        <h2 className={styles.heading}>
-          <span className={styles.headingLabel}>参加イベント</span>{" "}
-          <Badge value={events.length} />
-        </h2>
-        {events.map(event => <ItemBanner {...event}/>)}
-        <h2 className={styles.heading}>
-          <span className={styles.headingLabel}>関連リンク</span>
-        </h2>
-        <ul className={styles.linkList}>
-          <li><a href="https://twitter.com/oyakata2438">Twitter</a></li>
-          <li><a href="https://note.com/oyakata2438/n/nac549aac8cde">サークル公式ページ</a></li>
-          <li><a href="https://oyakata.booth.pm/">BOOTH</a></li>
-        </ul>
-      </div>
+      <Content circleDesciption={circleDesciption} items={items} />
+      <Side events={events} />
     </main>
   );
 };

@@ -1,16 +1,10 @@
 import Link from 'next/link'
 import styles from './index.module.css'
+import { Item } from '@/types'
 
-export type ItemProps = {
-    category: string
-    imagePath: string
-    title: string
-    eventName?: string 
-    publishedAt: Date
-    path: string
-}
+type Props = Item
 
-export const Item: React.FC<ItemProps> = ({category, imagePath, title, eventName,　publishedAt, path}) => {
+export const ItemCell: React.FC<Props> = ({category, imagePath, title, eventName,　publishedAt, path}) => {
     const date = publishedAt.toLocaleDateString().replace(/\//g,'.')
     const published = eventName ? `${eventName} (${date})` : date
     return <div>
