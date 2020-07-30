@@ -1,0 +1,6 @@
+- table:
+    schema: public
+    name: hoge
+- table:
+    schema: public
+    name: profile
