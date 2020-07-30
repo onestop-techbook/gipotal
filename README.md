@@ -44,3 +44,11 @@
 
 # 実装
 
+# セットアップ
+```
+$ npm install 
+$ cp .env.example .env
+# ローカルでHasuraを立ち上げる人のために
+$ docker-compose up
+$ npm run dev
+```
