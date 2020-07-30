@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "hasura": "hasura --project gipotal"
+    "hasura": "hasura --project hasura"
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.1.5",
