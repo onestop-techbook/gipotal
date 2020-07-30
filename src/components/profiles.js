@@ -1,17 +1,7 @@
-import gql from "graphql-tag";
-import { useQuery } from "@apollo/react-hooks";
-
-const OUR_FIRST_QUERY = gql`
-  query {
-    profile {
-      id
-      name
-    }
-  }
-`;
+import { useGetProfilesQuery } from "@/generated/graphql"
 
 const Profiles = () => {
-  const { loading, error, data } = useQuery(OUR_FIRST_QUERY);
+  const { loading, error, data } = useGetProfilesQuery();
 
   if (loading) return <p>loading</p>;
   if (error) return <p>ダメです！:{error.toString()}</p>;

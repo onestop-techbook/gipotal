@@ -1,0 +1,15 @@
+schema: http://localhost:8080/v1/graphql/
+documents:
+  - ./src/**/*.graphql
+overwrite: true
+generates:
+  ./src/generated/graphql.ts:
+    plugins:
+      - typescript
+      - typescript-operations # .tsx に書いた query, mutation 等から対応する型を生成する
+      - typescript-react-apollo # .tsx に書いた query, mutation 等から対応する hooks を生成する
+    config:
+      skipTypename: false
+      withHooks: true
+      withHOC: false
+      withComponent: false
