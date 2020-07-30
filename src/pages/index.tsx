@@ -10,7 +10,7 @@ import Profiles from "../components/profiles";
 const createApolloClient = () => {
   return new ApolloClient({
     link: new HttpLink({
-      uri: "http://localhost:8080/v1/graphql",
+      uri: process.env.NEXT_PUBLIC_GRAPHQL_URL,
     }),
     cache: new InMemoryCache(),
   });
