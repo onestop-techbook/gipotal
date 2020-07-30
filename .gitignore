@@ -68,3 +68,6 @@ yarn-error.log
 
 # Next.js
 .next
+
+# graphql コード生成
+/src/generated
