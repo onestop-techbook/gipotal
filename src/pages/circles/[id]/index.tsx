@@ -7,6 +7,7 @@ import { ItemCell } from "@/components/item-cell";
 import { Badge } from "@/components/badge";
 import { ItemBanner } from "@/components/item-banner";
 import { Item } from "@/types";
+import Profiles from "@/components/profiles"
 
 import styles from "./index.module.css";
 
@@ -21,6 +22,7 @@ const Header: React.FC = () => {
             <img className={styles.logo} src="/images/logo.svg" />
           </a>
         </Link>
+        <Profiles />
         <Link href="/signup">
           <a className={[styles.blackButton, styles.button].join(" ")}>
             新規登録
