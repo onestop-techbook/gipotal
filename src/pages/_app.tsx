@@ -10,7 +10,7 @@ import { ApolloProvider } from "@apollo/react-hooks";
 const createApolloClient = () => {
   return new ApolloClient({
     link: new HttpLink({
-      uri: process.env.NEXT_PUBLIC_GRAPHQL_URL,
+      uri: "https://gipotal.herokuapp.com/v1/graphql",
     }),
     cache: new InMemoryCache(),
   });
@@ -24,4 +24,4 @@ export default function MyApp({ Component, pageProps }) {
       <Component {...pageProps} />
     </ApolloProvider>
   );
-};
+}
