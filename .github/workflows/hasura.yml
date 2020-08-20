@@ -28,4 +28,4 @@ jobs:
 
     # Install CLI Test
     - name: Hasura Test
-      run: hasura migrate status --admin-secret HASURA_GRAPHQL_ADMIN_SECRET --project hasura/
+      run: hasura migrate status --admin-secret $HASURA_GRAPHQL_ADMIN_SECRET --project hasura/
