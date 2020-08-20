@@ -2,10 +2,12 @@ import "minireset.css";
 import "../variables.css";
 import "../base.css";
 
-import { ApolloClient } from "apollo-client";
-import { InMemoryCache } from "apollo-cache-inmemory";
-import { HttpLink } from "apollo-link-http";
-import { ApolloProvider } from "@apollo/react-hooks";
+import {
+  ApolloClient,
+  ApolloProvider,
+  InMemoryCache,
+  HttpLink,
+} from "@apollo/client";
 
 const createApolloClient = () => {
   return new ApolloClient({
