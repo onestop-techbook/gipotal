@@ -26,6 +26,6 @@ jobs:
     - name: Hasura CLI Install
       run: curl -L https://github.com/hasura/graphql-engine/raw/stable/cli/get.sh | bash
 
-    # Install Hasura CLI
-    - name: Echo Test
-      run: cat package.json
+    # Install CLI Test
+    - name: Hasura Test
+      run: hasura migrate status --admin-secret HASURA_GRAPHQL_ADMIN_SECRET --project hasura/
