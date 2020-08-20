@@ -1,4 +1,4 @@
-schema: http://localhost:8080/v1/graphql/
+schema: https://gipotal.herokuapp.com/v1/graphql
 documents:
   - ./src/**/*.graphql
 overwrite: true
