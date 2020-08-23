@@ -24,8 +24,7 @@
 }
 
 .header {
-  background-image: url("/images/background.png");
-  background-size: cover;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
 }
 
 .headerNav {
@@ -34,28 +33,26 @@
   display: flex;
   align-items: center;
   margin: 0px auto;
-  padding: 16px;
+  padding: 12px 0;
 }
 
 .circleName {
-  font-style: normal;
-  font-weight: bold;
   font-size: 32px;
-  line-height: 37px;
-  padding-top: 74px;
-  padding-bottom: 34px;
-  margin: auto;
-  text-align: center;
+  font-weight: 600;
+  margin-bottom: 16px;
 }
 
 .circleDesciption {
   line-height: 1.6;
+  opacity: 0.8;
 }
 
 .logoWrapper {
-  padding: 12px 0;
+  padding: 8px 0;
   margin-right: auto;
   display: inline-block;
+  position: relative;
+  top: 2px;
 }
 
 .logo {

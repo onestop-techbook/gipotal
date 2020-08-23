@@ -7,7 +7,6 @@ import { ItemCell } from "@/components/item-cell";
 import { Badge } from "@/components/badge";
 import { ItemBanner } from "@/components/item-banner";
 import { Item } from "@/types";
-import Profiles from "@/components/profiles"
 
 import styles from "./index.module.css";
 
@@ -22,7 +21,6 @@ const Header: React.FC = () => {
             <img className={styles.logo} src="/images/logo.svg" />
           </a>
         </Link>
-        <Profiles />
         <Link href="/signup">
           <a className={[styles.blackButton, styles.button].join(" ")}>
             新規登録
@@ -34,19 +32,20 @@ const Header: React.FC = () => {
           </a>
         </Link>
       </nav>
-      <h1 className={styles.circleName}>親方Project</h1>
     </header>
   );
 };
 
 type ContentProps = {
-  items: Item[];
+  circleName: string
   circleDesciption: string;
+  items: Item[];
 };
-const Content: React.FC<ContentProps> = ({ circleDesciption, items }) => {
+const Content: React.FC<ContentProps> = ({ circleName, circleDesciption, items }) => {
   return (
     <div className={styles.circleContent}>
-      <p className={styles.circleDescription}>{circleDesciption}</p>
+      <h1 className={styles.circleName}>{circleName}</h1>
+      <p className={styles.circleDesciption}>{circleDesciption}</p>
       <h2 className={styles.heading}>
         <span className={styles.headingLabel}>頒布物</span>{" "}
         <Badge value={items.length} />
@@ -164,7 +163,7 @@ const Main: React.FC<MainProps> = ({ circleDesciption }) => {
   ];
   return (
     <main className={styles.mainContainer}>
-      <Content circleDesciption={circleDesciption} items={items} />
+      <Content circleName="親方Project" circleDesciption={circleDesciption} items={items} />
       <Side events={events} />
     </main>
   );
