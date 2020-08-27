@@ -1,6 +1,50 @@
 - table:
     schema: public
+    name: circle_items
+  configuration:
+    custom_root_fields: {}
+    custom_column_names:
+      booth_url: boothUrl
+      circle_id: circleId
+      first_event_text: firstEventText
+      image_url: imageUrl
+      genre_id: genreId
+      tora_url: toraUrl
+      amazon_url: amazonUrl
+      page_num: pageNum
+      published_on: publishedOn
+- table:
+    schema: public
+    name: circle_links
+  configuration:
+    custom_root_fields: {}
+    custom_column_names:
+      circle_id: circleId
+      link_kind: linkKind
+- table:
+    schema: public
+    name: circles
+  configuration:
+    custom_root_fields: {}
+    custom_column_names:
+      tbf9_url: tbf9Url
+- table:
+    schema: public
+    name: genre
+- table:
+    schema: public
     name: hoge
 - table:
     schema: public
     name: profile
+- table:
+    schema: public
+    name: tag
+- table:
+    schema: public
+    name: tagging
+  configuration:
+    custom_root_fields: {}
+    custom_column_names:
+      item_id: itemId
+      tag_id: tagId
