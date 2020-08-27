@@ -27,8 +27,8 @@ jobs:
       run: curl -L https://github.com/hasura/graphql-engine/raw/stable/cli/get.sh | bash
 
     # Install CLI Test
-    - name: Hasura Test
+    - name: Hasura Migrate
       env: 
         HASURA_GRAPHQL_ADMIN_SECRET: ${{ secrets.HASURA_GRAPHQL_ADMIN_SECRET }}
         HASURA_ENDPOINT: ${{ secrets.HASURA_ENDPOINT }}
-      run: hasura migrate status --admin-secret $HASURA_GRAPHQL_ADMIN_SECRET --project hasura/ --endpoint $HASURA_ENDPOINT 
+      run: hasura migrate apply --admin-secret $HASURA_GRAPHQL_ADMIN_SECRET --project hasura/ --endpoint $HASURA_ENDPOINT 
