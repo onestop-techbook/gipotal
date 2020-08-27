@@ -13,6 +13,18 @@
       amazon_url: amazonUrl
       page_num: pageNum
       published_on: publishedOn
+  object_relationships:
+  - name: genre
+    using:
+      foreign_key_constraint_on: genre_id
+  array_relationships:
+  - name: taggings
+    using:
+      foreign_key_constraint_on:
+        column: item_id
+        table:
+          schema: public
+          name: tagging
 - table:
     schema: public
     name: circle_links
@@ -21,6 +33,10 @@
     custom_column_names:
       circle_id: circleId
       link_kind: linkKind
+  object_relationships:
+  - name: circle
+    using:
+      foreign_key_constraint_on: circle_id
 - table:
     schema: public
     name: circles
@@ -28,9 +44,25 @@
     custom_root_fields: {}
     custom_column_names:
       tbf9_url: tbf9Url
+  array_relationships:
+  - name: circleLinks
+    using:
+      foreign_key_constraint_on:
+        column: circle_id
+        table:
+          schema: public
+          name: circle_links
 - table:
     schema: public
     name: genre
+  array_relationships:
+  - name: circleItems
+    using:
+      foreign_key_constraint_on:
+        column: genre_id
+        table:
+          schema: public
+          name: circle_items
 - table:
     schema: public
     name: hoge
@@ -40,6 +72,14 @@
 - table:
     schema: public
     name: tag
+  array_relationships:
+  - name: taggings
+    using:
+      foreign_key_constraint_on:
+        column: tag_id
+        table:
+          schema: public
+          name: tagging
 - table:
     schema: public
     name: tagging
@@ -48,3 +88,10 @@
     custom_column_names:
       item_id: itemId
       tag_id: tagId
+  object_relationships:
+  - name: circleItem
+    using:
+      foreign_key_constraint_on: item_id
+  - name: tag
+    using:
+      foreign_key_constraint_on: tag_id
