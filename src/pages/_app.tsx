@@ -12,7 +12,7 @@ import {
 const createApolloClient = () => {
   return new ApolloClient({
     link: new HttpLink({
-      uri: "https://gipotal.herokuapp.com/v1/graphql",
+      uri: process.env.NEXT_PUBLIC_GRAPHQL_URL,
     }),
     cache: new InMemoryCache(),
   });

@@ -8,7 +8,7 @@
     "start": "next start",
     "hasura": "hasura --project hasura",
     "prebuild": "npm run codegen",
-    "codegen": "gql-gen"
+    "codegen": "gql-gen -r dotenv/config"
   },
   "dependencies": {
     "@apollo/client": "^3.1.1",
