@@ -45,10 +45,64 @@
 # 実装
 
 # セットアップ
+
+## 事前条件
+
+1. Node.js LTS 最新版をインストールしてください。（Macなら homebrew + anyenv + nodenv が一番楽です）
+2. 当リポジトリの最新状態にしてください。 `git pull origin master` など
+
+### 確認方法
+
+```sh
+$ node -v
+v12.16.0
 ```
-$ npm install 
+
+Node.js の v12.16.0 がインストールできていることが確認できる。
+
+## インストール
+
+手順は不完全かもしれません。現時点では hasura ディレクトリ以下のデータがバグってるっぽいので、動作確認はとれていません。
+
+```
+# パッケージのインストール
+$ npm i
+```
+
+```
+# 設定ファイルを準備
 $ cp .env.example .env
-# ローカルでHasuraを立ち上げる人のために
+```
+
+```
+# ローカルでHasuraを立ち上げる
 $ docker-compose up
+```
+
+```
+# データベースのマイグレーションを適用する
+$ npm run hasura migrate apply
+
+# メタデータ（Hasura 固有の設定）を適用する
+$ npm run hasura metadata apply
+```
+
+```
+# 必要なコード生成をする
+$ npm run codegen
+```
+
+```
+# 開発モードで起動する ※3000 番ポートを空けていること
 $ npm run dev
 ```
+
+# FAQ
+
+## Q. なんかインストールできないんだけど
+
+エラー情報が分からないと判断ができないので、ターミナルに表示されたメッセージを全てコピペしていただけると何か分かるかもしれません。
+
+## Q. `Module not found: Can't resolve '@/generated/graphql'` エラーが出る
+
+`codegen` が実行されていないか、失敗していて、コード生成がうまくいってないです。
