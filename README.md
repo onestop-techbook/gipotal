@@ -97,6 +97,11 @@ $ npm run codegen
 $ npm run dev
 ```
 
+```
+# Hasura Console起動する ※9695 番ポートを空けていること
+$ npm run hasura console
+```
+
 # FAQ
 
 ## Q. なんかインストールできないんだけど
