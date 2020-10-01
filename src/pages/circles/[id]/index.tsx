@@ -7,7 +7,7 @@ import { Badge } from "@/components/badge";
 import { Layout } from "@/components/layout";
 import { ItemBanner } from "@/components/item-banner";
 import { Item } from "@/types";
-
+import { useGetCircleQuery } from "@/generated/graphql"
 import styles from "./index.module.css";
 
 type ItemBannerProps = React.ComponentProps<typeof ItemBanner>;
@@ -84,50 +84,30 @@ type MainProps = {
   events: ItemBannerProps[];
 };
 
-const useItems = () => {
-  const items: Item[] = [
-    {
-      category: "ウェブアプリ",
-      title: "Slack App開発ガイド",
-      eventName: "技術書典6",
-      publishedAt: new Date(),
-      imagePath: "/images/circle_item.png",
-      path: "/hoge",
-    },
-    {
-      category: "ウェブアプリ",
-      title: "Slack App開発ガイド",
-      eventName: "技術書典6",
-      publishedAt: new Date(),
-      imagePath: "/images/circle_item.png",
-      path: "/hoge",
-    },
-    {
-      category: "ウェブアプリ",
-      title: "Slack App開発ガイド",
-      eventName: "技術書典6",
-      publishedAt: new Date(),
-      imagePath: "/images/circle_item.png",
-      path: "/hoge",
-    },
-    {
-      category: "ウェブアプリ",
-      title: "Slack App開発ガイド",
-      eventName: "技術書典6",
-      publishedAt: new Date(),
-      imagePath: "/images/circle_item.png",
-      path: "/hoge",
-    },
-    {
-      category: "ウェブアプリ",
-      title: "Slack App開発ガイド",
-      eventName: "技術書典6",
-      publishedAt: new Date(),
-      imagePath: "/images/circle_item.png",
-      path: "/hoge",
-    },
-  ];
-  return items
+const useCircle = (id: number) => {
+  // const { loading, error, data } = useGetCircleQuery({
+  //   variables: {
+  //     id: id
+  //   }
+  // })
+
+  console.log(useGetCircleQuery);
+  const data: any = {}
+  return data
+}
+
+const useItems = ():Item[] => {
+  const { circles } = useCircle(1)
+
+  return circles[0].circleItems.map(item => {
+    return {
+      category: item.genre.genre,
+      imagePath: item.imageUrl,
+      title: item.name,
+      publishedAt: item.publishedOn,
+      path: "/hoge"
+    }
+  })
 }
 
 const useEvents = () => {
@@ -153,6 +133,7 @@ const useEvents = () => {
 const useCircleName = () => {
   return "親方Project"
 }
+
 const useDescription = () => {
   return "親方Projectでは、エンジニアの困ったを解決する合同誌を作ってます。見積り何もわからん、を集めた「ワンストップ見積もり」、勉強会は楽しいぞ！を集めたワンストップ勉強会をはじめとして、エンジニアの困ったを解決すべく活動中です。執筆者15名(平均)の知見をあなたにワンストップでお届けます。また、執筆者は絶賛募集中。1ページからでも寄稿OKです。あなたの知見を、今、この本に！書いてみたいと思ったときが書くときです。"
 }
