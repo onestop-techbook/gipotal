@@ -1,0 +1,14 @@
+query getCircle ($id: Int!) {
+  circles(where: {id: {_eq: $id}}) {
+    description
+    name
+    circleItems {
+      publishedOn
+      name
+      imageUrl
+      genre {
+        genre
+      }
+    }
+  }
+}
