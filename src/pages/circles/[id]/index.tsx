@@ -78,10 +78,13 @@ const Side: React.FC<SideProps> = ({ events }) => {
 };
 
 type MainProps = {
+  circleName: string;
   circleDesciption: string;
+  items: Item[];
+  events: ItemBannerProps[];
 };
 
-const Main: React.FC<MainProps> = ({ circleDesciption }) => {
+const useItems = () => {
   const items: Item[] = [
     {
       category: "ウェブアプリ",
@@ -124,6 +127,10 @@ const Main: React.FC<MainProps> = ({ circleDesciption }) => {
       path: "/hoge",
     },
   ];
+  return items
+}
+
+const useEvents = () => {
   const events: ItemBannerProps[] = [
     {
       text: "技術書典9",
@@ -141,10 +148,20 @@ const Main: React.FC<MainProps> = ({ circleDesciption }) => {
       endAt: "2019.09.12",
     },
   ];
+  return events
+}
+const useCircleName = () => {
+  return "親方Project"
+}
+const useDescription = () => {
+  return "親方Projectでは、エンジニアの困ったを解決する合同誌を作ってます。見積り何もわからん、を集めた「ワンストップ見積もり」、勉強会は楽しいぞ！を集めたワンストップ勉強会をはじめとして、エンジニアの困ったを解決すべく活動中です。執筆者15名(平均)の知見をあなたにワンストップでお届けます。また、執筆者は絶賛募集中。1ページからでも寄稿OKです。あなたの知見を、今、この本に！書いてみたいと思ったときが書くときです。"
+}
+
+const Main: React.FC<MainProps> = ({ circleName, circleDesciption, items, events }) => {
   return (
     <main className={styles.mainContainer}>
       <Content
-        circleName="親方Project"
+        circleName={circleName}
         circleDesciption={circleDesciption}
         items={items}
       />
@@ -156,11 +173,19 @@ const Main: React.FC<MainProps> = ({ circleDesciption }) => {
 const CirclesShow: NextPage = () => {
   // const router = useRouter()
   // const { id } = router.query
-  const circleDesciption =
-    "親方Projectでは、エンジニアの困ったを解決する合同誌を作ってます。見積り何もわからん、を集めた「ワンストップ見積もり」、勉強会は楽しいぞ！を集めたワンストップ勉強会をはじめとして、エンジニアの困ったを解決すべく活動中です。執筆者15名(平均)の知見をあなたにワンストップでお届けます。また、執筆者は絶賛募集中。1ページからでも寄稿OKです。あなたの知見を、今、この本に！書いてみたいと思ったときが書くときです。";
+  const items = useItems()
+  const events = useEvents()
+  const circleName = useCircleName()
+  const circleDesciption = useDescription()
+
   return (
     <Layout>
-      <Main circleDesciption={circleDesciption} />
+      <Main 
+       circleName={circleName}
+       circleDesciption={circleDesciption} 
+       items={items}
+       events={events}
+      />
     </Layout>
   );
 };
