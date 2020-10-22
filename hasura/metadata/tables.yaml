@@ -14,6 +14,9 @@
       page_num: pageNum
       published_on: publishedOn
   object_relationships:
+  - name: circle
+    using:
+      foreign_key_constraint_on: circle_id
   - name: genre
     using:
       foreign_key_constraint_on: genre_id
@@ -45,6 +48,13 @@
     custom_column_names:
       tbf9_url: tbf9Url
   array_relationships:
+  - name: circleItems
+    using:
+      foreign_key_constraint_on:
+        column: circle_id
+        table:
+          schema: public
+          name: circle_items
   - name: circleLinks
     using:
       foreign_key_constraint_on:

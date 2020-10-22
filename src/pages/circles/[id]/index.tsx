@@ -7,7 +7,7 @@ import { Badge } from "@/components/badge";
 import { Layout } from "@/components/layout";
 import { ItemBanner } from "@/components/item-banner";
 import { Item } from "@/types";
-
+import { useGetCircleQuery } from "@/generated/graphql"
 import styles from "./index.module.css";
 
 type ItemBannerProps = React.ComponentProps<typeof ItemBanner>;
@@ -78,52 +78,39 @@ const Side: React.FC<SideProps> = ({ events }) => {
 };
 
 type MainProps = {
+  circleName: string;
   circleDesciption: string;
+  items: Item[];
+  events: ItemBannerProps[];
 };
 
-const Main: React.FC<MainProps> = ({ circleDesciption }) => {
-  const items: Item[] = [
-    {
-      category: "ウェブアプリ",
-      title: "Slack App開発ガイド",
-      eventName: "技術書典6",
-      publishedAt: new Date(),
-      imagePath: "/images/circle_item.png",
-      path: "/hoge",
-    },
-    {
-      category: "ウェブアプリ",
-      title: "Slack App開発ガイド",
-      eventName: "技術書典6",
-      publishedAt: new Date(),
-      imagePath: "/images/circle_item.png",
-      path: "/hoge",
-    },
-    {
-      category: "ウェブアプリ",
-      title: "Slack App開発ガイド",
-      eventName: "技術書典6",
-      publishedAt: new Date(),
-      imagePath: "/images/circle_item.png",
-      path: "/hoge",
-    },
-    {
-      category: "ウェブアプリ",
-      title: "Slack App開発ガイド",
-      eventName: "技術書典6",
-      publishedAt: new Date(),
-      imagePath: "/images/circle_item.png",
-      path: "/hoge",
-    },
-    {
-      category: "ウェブアプリ",
-      title: "Slack App開発ガイド",
-      eventName: "技術書典6",
-      publishedAt: new Date(),
-      imagePath: "/images/circle_item.png",
-      path: "/hoge",
-    },
-  ];
+const useCircle = (id: number) => {
+  // const { loading, error, data } = useGetCircleQuery({
+  //   variables: {
+  //     id: id
+  //   }
+  // })
+
+  console.log(useGetCircleQuery);
+  const data: any = {}
+  return data
+}
+
+const useItems = ():Item[] => {
+  const { circles } = useCircle(1)
+
+  return circles[0].circleItems.map(item => {
+    return {
+      category: item.genre.genre,
+      imagePath: item.imageUrl,
+      title: item.name,
+      publishedAt: item.publishedOn,
+      path: "/hoge"
+    }
+  })
+}
+
+const useEvents = () => {
   const events: ItemBannerProps[] = [
     {
       text: "技術書典9",
@@ -141,10 +128,21 @@ const Main: React.FC<MainProps> = ({ circleDesciption }) => {
       endAt: "2019.09.12",
     },
   ];
+  return events
+}
+const useCircleName = () => {
+  return "親方Project"
+}
+
+const useDescription = () => {
+  return "親方Projectでは、エンジニアの困ったを解決する合同誌を作ってます。見積り何もわからん、を集めた「ワンストップ見積もり」、勉強会は楽しいぞ！を集めたワンストップ勉強会をはじめとして、エンジニアの困ったを解決すべく活動中です。執筆者15名(平均)の知見をあなたにワンストップでお届けます。また、執筆者は絶賛募集中。1ページからでも寄稿OKです。あなたの知見を、今、この本に！書いてみたいと思ったときが書くときです。"
+}
+
+const Main: React.FC<MainProps> = ({ circleName, circleDesciption, items, events }) => {
   return (
     <main className={styles.mainContainer}>
       <Content
-        circleName="親方Project"
+        circleName={circleName}
         circleDesciption={circleDesciption}
         items={items}
       />
@@ -156,11 +154,19 @@ const Main: React.FC<MainProps> = ({ circleDesciption }) => {
 const CirclesShow: NextPage = () => {
   // const router = useRouter()
   // const { id } = router.query
-  const circleDesciption =
-    "親方Projectでは、エンジニアの困ったを解決する合同誌を作ってます。見積り何もわからん、を集めた「ワンストップ見積もり」、勉強会は楽しいぞ！を集めたワンストップ勉強会をはじめとして、エンジニアの困ったを解決すべく活動中です。執筆者15名(平均)の知見をあなたにワンストップでお届けます。また、執筆者は絶賛募集中。1ページからでも寄稿OKです。あなたの知見を、今、この本に！書いてみたいと思ったときが書くときです。";
+  const items = useItems()
+  const events = useEvents()
+  const circleName = useCircleName()
+  const circleDesciption = useDescription()
+
   return (
     <Layout>
-      <Main circleDesciption={circleDesciption} />
+      <Main 
+       circleName={circleName}
+       circleDesciption={circleDesciption} 
+       items={items}
+       events={events}
+      />
     </Layout>
   );
 };
