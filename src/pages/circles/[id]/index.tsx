@@ -7,8 +7,30 @@ import { Badge } from "@/components/badge";
 import { Layout } from "@/components/layout";
 import { ItemBanner } from "@/components/item-banner";
 import { Item } from "@/types";
-import { useGetCircleQuery } from "@/generated/graphql"
+//import { useGetCircleQuery } from "@/generated/graphql"
 import styles from "./index.module.css";
+
+import { useGetCircleQuery } from "@/generated/graphql"
+
+const Profiles = () => {
+  const { loading, error, data } = useGetCircleQuery({variables:{"id":1}});
+
+  if (loading) return <p>loading</p>;
+  if (error) return <p>ダメです！:{error.toString()}</p>;
+  return (
+    <div>
+      {JSON.stringify(data)}
+    </div>
+  );
+};
+
+const Profile = ({ profile }) => {
+  return (
+    <p>
+      {profile.id}: {profile.name}
+    </p>
+  );
+};
 
 type ItemBannerProps = React.ComponentProps<typeof ItemBanner>;
 
@@ -163,20 +185,49 @@ const Main: React.FC<MainProps> = ({ circleName, circleDesciption, items, events
 const CirclesShow: NextPage = () => {
   // const router = useRouter()
   // const { id } = router.query
-  const items = useItems()
-  const events = useEvents()
-  const circleName = useCircleName()
-  const circleDesciption = useDescription()
+  // const items = useItems()
+  // const events = useEvents()
+  // const circleName = useCircleName()
+  // const circleDesciption = useDescription()
 
+  // return (
+  //   <Layout>
+  //     {/* <Main 
+  //      circleName={circleName}
+  //      circleDesciption={circleDesciption} 
+  //      items={items}
+  //      events={events}
+  //     /> */}
+  //     <Profiles />
+  //   </Layout>
+  // );
+
+  const { loading, error, data } = useGetCircleQuery({variables:{"id":1}});
+
+  if (loading) return <p>loading</p>;
+  if (error) return <p>ダメです！:{error.toString()}</p>;
+  const circleName = data.circles[0].name;
+  const circleDesciption = data.circles[0].description;
+  const items = data.circles[0].circleItems;
+  const events = useEvents();
   return (
-    <Layout>
-      <Main 
-       circleName={circleName}
-       circleDesciption={circleDesciption} 
-       items={items}
-       events={events}
-      />
-    </Layout>
+    <div>
+      <div>
+        {JSON.stringify(data)}
+      </div>
+      <div>
+        {JSON.stringify(circleName)}
+      </div>
+      <div>
+        {JSON.stringify(circleDesciption)}
+      </div>
+      <div>
+        {JSON.stringify(items)}
+      </div>
+      <div>
+        {JSON.stringify(events)}
+      </div>
+    </div>
   );
 };
 
