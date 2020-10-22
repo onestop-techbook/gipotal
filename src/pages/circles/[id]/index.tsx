@@ -85,15 +85,24 @@ type MainProps = {
 };
 
 const useCircle = (id: number) => {
-  // const { loading, error, data } = useGetCircleQuery({
-  //   variables: {
-  //     id: id
-  //   }
-  // })
-
-  console.log(useGetCircleQuery);
-  const data: any = {}
-  return data
+  return {
+      "circles": [
+        {
+          "description": "親方Projectでは、エンジニアの困ったを解決する合同誌を作ってます。見積り何もわからん、を集めた「ワンストップ見積もり」、勉強会は楽しいぞ！を集めたワンストップ勉強会をはじめとして、エンジニアの困ったを解決すべく活動中です。執筆者15名(平均)の知見をあなたにワンストップでお届けます。また、執筆者は絶賛募集中。1ページからでも寄稿OKです。あなたの知見を、今、この本に！書いてみたいと思ったときが書くときです。",
+          "name": "親方Project",
+          "circleItems": [
+            {
+              "publishedOn": new Date("2020-10-01"),
+              "name": "Slack App開発ガイド",
+              "imageUrl": "/images/circle_item.png",
+              "genre": {
+                "genre": "ウェブアプリ"
+              }
+            }
+          ]
+        }
+      ]
+    }
 }
 
 const useItems = ():Item[] => {
