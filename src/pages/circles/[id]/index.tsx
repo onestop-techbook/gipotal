@@ -183,6 +183,8 @@ const Main: React.FC<MainProps> = ({ circleName, circleDesciption, items, events
 };
 
 const CirclesShow: NextPage = () => {
+
+
   // const router = useRouter()
   // const { id } = router.query
   // const items = useItems()
@@ -190,45 +192,55 @@ const CirclesShow: NextPage = () => {
   // const circleName = useCircleName()
   // const circleDesciption = useDescription()
 
-  // return (
-  //   <Layout>
-  //     {/* <Main 
-  //      circleName={circleName}
-  //      circleDesciption={circleDesciption} 
-  //      items={items}
-  //      events={events}
-  //     /> */}
-  //     <Profiles />
-  //   </Layout>
-  // );
-
   const { loading, error, data } = useGetCircleQuery({variables:{"id":1}});
 
   if (loading) return <p>loading</p>;
   if (error) return <p>ダメです！:{error.toString()}</p>;
   const circleName = data.circles[0].name;
   const circleDesciption = data.circles[0].description;
-  const items = data.circles[0].circleItems;
+  const items = data.circles[0].circleItems.map(item=>{
+    return{
+    category: "",
+    imagePath: "",
+    title: "",
+    eventName: "",
+    publishedAt: new Date(),
+    path: "",
+    }
+  });
   const events = useEvents();
+  
   return (
-    <div>
-      <div>
-        {JSON.stringify(data)}
-      </div>
-      <div>
-        {JSON.stringify(circleName)}
-      </div>
-      <div>
-        {JSON.stringify(circleDesciption)}
-      </div>
-      <div>
-        {JSON.stringify(items)}
-      </div>
-      <div>
-        {JSON.stringify(events)}
-      </div>
-    </div>
+    <Layout>
+      <Main 
+       circleName={circleName}
+       circleDesciption={circleDesciption} 
+       items={items}
+       events={events}
+      />
+      <Profiles />
+    </Layout>
   );
+  
+  // return (
+  //   <div>
+  //     <div>
+  //       {JSON.stringify(data)}
+  //     </div>
+  //     <div>
+  //       {JSON.stringify(circleName)}
+  //     </div>
+  //     <div>
+  //       {JSON.stringify(circleDesciption)}
+  //     </div>
+  //     <div>
+  //       {JSON.stringify(items)}
+  //     </div>
+  //     <div>
+  //       {JSON.stringify(events)}
+  //     </div>
+  //   </div>
+  // );
 };
 
 export default CirclesShow;
