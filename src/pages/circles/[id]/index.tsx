@@ -10,18 +10,14 @@ import { Item } from "@/types";
 //import { useGetCircleQuery } from "@/generated/graphql"
 import styles from "./index.module.css";
 
-import { useGetCircleQuery } from "@/generated/graphql"
+import { useGetCircleQuery } from "@/generated/graphql";
 
 const Profiles = () => {
-  const { loading, error, data } = useGetCircleQuery({variables:{"id":1}});
+  const { loading, error, data } = useGetCircleQuery({ variables: { id: 1 } });
 
   if (loading) return <p>loading</p>;
   if (error) return <p>ダメです！:{error.toString()}</p>;
-  return (
-    <div>
-      {JSON.stringify(data)}
-    </div>
-  );
+  return <div>{JSON.stringify(data)}</div>;
 };
 
 const Profile = ({ profile }) => {
@@ -108,38 +104,39 @@ type MainProps = {
 
 const useCircle = (id: number) => {
   return {
-      "circles": [
-        {
-          "description": "親方Projectでは、エンジニアの困ったを解決する合同誌を作ってます。見積り何もわからん、を集めた「ワンストップ見積もり」、勉強会は楽しいぞ！を集めたワンストップ勉強会をはじめとして、エンジニアの困ったを解決すべく活動中です。執筆者15名(平均)の知見をあなたにワンストップでお届けます。また、執筆者は絶賛募集中。1ページからでも寄稿OKです。あなたの知見を、今、この本に！書いてみたいと思ったときが書くときです。",
-          "name": "親方Project",
-          "circleItems": [
-            {
-              "publishedOn": new Date("2020-10-01"),
-              "name": "Slack App開発ガイド",
-              "imageUrl": "/images/circle_item.png",
-              "genre": {
-                "genre": "ウェブアプリ"
-              }
-            }
-          ]
-        }
-      ]
-    }
-}
+    circles: [
+      {
+        description:
+          "親方Projectでは、エンジニアの困ったを解決する合同誌を作ってます。見積り何もわからん、を集めた「ワンストップ見積もり」、勉強会は楽しいぞ！を集めたワンストップ勉強会をはじめとして、エンジニアの困ったを解決すべく活動中です。執筆者15名(平均)の知見をあなたにワンストップでお届けます。また、執筆者は絶賛募集中。1ページからでも寄稿OKです。あなたの知見を、今、この本に！書いてみたいと思ったときが書くときです。",
+        name: "親方Project",
+        circleItems: [
+          {
+            publishedOn: new Date("2020-10-01"),
+            name: "Slack App開発ガイド",
+            imageUrl: "/images/circle_item.png",
+            genre: {
+              genre: "ウェブアプリ",
+            },
+          },
+        ],
+      },
+    ],
+  };
+};
 
-const useItems = ():Item[] => {
-  const { circles } = useCircle(1)
+const useItems = (): Item[] => {
+  const { circles } = useCircle(1);
 
-  return circles[0].circleItems.map(item => {
+  return circles[0].circleItems.map((item) => {
     return {
       category: item.genre.genre,
       imagePath: item.imageUrl,
       title: item.name,
       publishedAt: item.publishedOn,
-      path: "/hoge"
-    }
-  })
-}
+      path: "/hoge",
+    };
+  });
+};
 
 const useEvents = () => {
   const events: ItemBannerProps[] = [
@@ -159,17 +156,22 @@ const useEvents = () => {
       endAt: "2019.09.12",
     },
   ];
-  return events
-}
+  return events;
+};
 const useCircleName = () => {
-  return "親方Project"
-}
+  return "親方Project";
+};
 
 const useDescription = () => {
-  return "親方Projectでは、エンジニアの困ったを解決する合同誌を作ってます。見積り何もわからん、を集めた「ワンストップ見積もり」、勉強会は楽しいぞ！を集めたワンストップ勉強会をはじめとして、エンジニアの困ったを解決すべく活動中です。執筆者15名(平均)の知見をあなたにワンストップでお届けます。また、執筆者は絶賛募集中。1ページからでも寄稿OKです。あなたの知見を、今、この本に！書いてみたいと思ったときが書くときです。"
-}
+  return "親方Projectでは、エンジニアの困ったを解決する合同誌を作ってます。見積り何もわからん、を集めた「ワンストップ見積もり」、勉強会は楽しいぞ！を集めたワンストップ勉強会をはじめとして、エンジニアの困ったを解決すべく活動中です。執筆者15名(平均)の知見をあなたにワンストップでお届けます。また、執筆者は絶賛募集中。1ページからでも寄稿OKです。あなたの知見を、今、この本に！書いてみたいと思ったときが書くときです。";
+};
 
-const Main: React.FC<MainProps> = ({ circleName, circleDesciption, items, events }) => {
+const Main: React.FC<MainProps> = ({
+  circleName,
+  circleDesciption,
+  items,
+  events,
+}) => {
   return (
     <main className={styles.mainContainer}>
       <Content
@@ -183,8 +185,6 @@ const Main: React.FC<MainProps> = ({ circleName, circleDesciption, items, events
 };
 
 const CirclesShow: NextPage = () => {
-
-
   // const router = useRouter()
   // const { id } = router.query
   // const items = useItems()
@@ -192,36 +192,35 @@ const CirclesShow: NextPage = () => {
   // const circleName = useCircleName()
   // const circleDesciption = useDescription()
 
-  const { loading, error, data } = useGetCircleQuery({variables:{"id":1}});
+  const { loading, error, data } = useGetCircleQuery({ variables: { id: 1 } });
 
   if (loading) return <p>loading</p>;
   if (error) return <p>ダメです！:{error.toString()}</p>;
   const circleName = data.circles[0].name;
   const circleDesciption = data.circles[0].description;
-  const items = data.circles[0].circleItems.map(item=>{
-    return{
-    category: "",
-    imagePath: "",
-    title: "",
-    eventName: "",
-    publishedAt: new Date(),
-    path: "",
-    }
+  const items = data.circles[0].circleItems.map((item) => {
+    return {
+      category: item.genre.genre,
+      imagePath: item.imageUrl,
+      title: item.name,
+      eventName: "",
+      publishedAt: new Date(item.publishedOn),
+      path: "",
+    };
   });
   const events = useEvents();
-  
+
   return (
     <Layout>
-      <Main 
-       circleName={circleName}
-       circleDesciption={circleDesciption} 
-       items={items}
-       events={events}
+      <Main
+        circleName={circleName}
+        circleDesciption={circleDesciption}
+        items={items}
+        events={events}
       />
-      <Profiles />
     </Layout>
   );
-  
+
   // return (
   //   <div>
   //     <div>
