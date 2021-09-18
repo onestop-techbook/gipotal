@@ -11,7 +11,7 @@ export const useGetCircleById = (id: number) => {
           circleItems: [
             {
               category: "カテゴリ",
-              imagePath: "URL",
+              imagePath: "/images/circle_item.png",
               title: "タイトル",
               eventName: "イベント名",
               publishedAt: new Date(),

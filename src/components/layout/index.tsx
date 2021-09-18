@@ -23,7 +23,7 @@ export const Layout: React.FC = ({ children }) => {
           </Link>
         </nav>
       </header>
-      {children}
+      <main className="max-w-[980px] mx-auto">{children}</main>
     </>
   );
 };
