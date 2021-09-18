@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Item } from "@/types";
+import { Item } from "@/logics/items";
 import { ItemImage } from "@/components/item-image";
 
 type Props = Item;

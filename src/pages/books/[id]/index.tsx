@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import { Layout } from "@/components/layout";
 import { ItemImage } from "@/components/item-image";
-import { Item } from "@/types";
+import { Item } from "@/logics/items";
 
 const useFetchItem = (): Item => {
   return {
@@ -11,6 +11,9 @@ const useFetchItem = (): Item => {
     eventName: "技術書典6",
     publishedAt: new Date(),
     path: "",
+    numberOfPages: 122,
+    price: 1_000,
+    tags: ["勉強会", "成長", "勉強会運営", "勉強会参加"],
   };
 };
 
@@ -31,7 +34,16 @@ const Label = ({ label }) => {
 };
 
 const BookPage: NextPage = () => {
-  const { imagePath, title, category, eventName, publishedAt } = useFetchItem();
+  const {
+    imagePath,
+    title,
+    category,
+    eventName,
+    publishedAt,
+    numberOfPages,
+    price,
+    tags,
+  } = useFetchItem();
   const circleName = "親方Project";
   const content = `[技術書典6新刊]勉強会のすべてがわかる本。一般参加から、LT登壇、主催、その後のコミュニティ運営まで。ドキドキわくわくの初参加から、登壇者としての一歩、主催も楽しいよ、いろいろ経験してきた著者20人が送る勉強会ノウハウの決定版。
 
@@ -56,9 +68,6 @@ const BookPage: NextPage = () => {
 　-主催者から紹介
 　-参加したら面白かった
 　-参加・主催したら世界が広がった`;
-  const numberOfPages = 122;
-  const price = 1_000;
-  const tags = ["勉強会", "成長", "勉強会運営", "勉強会参加"];
 
   return (
     <Layout>

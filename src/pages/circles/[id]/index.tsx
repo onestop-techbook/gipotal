@@ -5,7 +5,7 @@ import { ItemCell } from "@/components/item-cell";
 import { Badge } from "@/components/badge";
 import { Layout } from "@/components/layout";
 import { ItemBanner } from "@/components/item-banner";
-import { Item } from "@/types";
+import { Item } from "@/logics/items";
 
 import { useGetCircleById } from "@/logics/circles";
 import { useEvents } from "@/logics/events";
