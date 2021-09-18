@@ -1,6 +1,4 @@
 import Head from "next/head";
-import styles from "./index.module.css";
-import Profiles from "../components/profiles";
 import { Layout } from "@/components/layout";
 
 export default function Home() {
@@ -11,8 +9,7 @@ export default function Home() {
           <title>Create Next App</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <main className={styles.hello}>ギポッ</main>
-        <Profiles />
+        <main className="text-red-500">ギポッ</main>
         <footer></footer>
       </div>
     </Layout>

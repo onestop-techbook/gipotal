@@ -1,6 +1,7 @@
-import "minireset.css";
-import "../variables.css";
-import "../base.css";
+// import "minireset.css";
+// import "../variables.css";
+// import "../base.css";
+import "tailwindcss/tailwind.css";
 
 import {
   ApolloClient,

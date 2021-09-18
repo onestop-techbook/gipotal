@@ -1,5 +1,3 @@
-import styles from "./index.module.css";
-
 type Props = {
   text: string;
   startAt: string;
@@ -8,11 +6,11 @@ type Props = {
 
 export const ItemBanner: React.FC<Props> = ({ text, startAt, endAt }) => {
   return (
-    <div className={styles.container}>
-      <div className={styles.date}>
+    <div className="p-3 bg-event-banner text-white mb-2 rounded-sm">
+      <div className="text-sm opacity-80 font-semibold">
         {startAt} - {endAt}
       </div>
-      <div className={styles.text}>{text}</div>
+      <div className="text-xl font-semibold">{text}</div>
     </div>
   );
 };
