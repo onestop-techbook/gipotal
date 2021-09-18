@@ -4,7 +4,7 @@ import Link from "next/link";
 export const Layout: React.FC = ({ children }) => {
   return (
     <>
-      <header className="shadow">
+      <header className="shadow relative">
         <nav className="w-full flex items-center mx-auto py-3 max-w-[980px]">
           <Link href="/">
             <a className="px-2 mr-auto inline-block relative top-[2px]">
@@ -23,7 +23,7 @@ export const Layout: React.FC = ({ children }) => {
           </Link>
         </nav>
       </header>
-      <main className="max-w-[980px] mx-auto">{children}</main>
+      <div className="max-w-[980px] mx-auto">{children}</div>
     </>
   );
 };

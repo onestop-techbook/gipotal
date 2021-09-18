@@ -1,31 +1,8 @@
 import { NextPage } from "next";
 import { Layout } from "@/components/layout";
 import { ItemImage } from "@/components/item-image";
-import { Item } from "@/logics/items";
-
-const useFetchItem = (): Item => {
-  return {
-    category: "ソフトスキル",
-    imagePath: "/images/circle_item.png",
-    title: "ワンストップ勉強会",
-    eventName: "技術書典6",
-    publishedAt: new Date(),
-    path: "",
-    numberOfPages: 122,
-    price: 1_000,
-    tags: ["勉強会", "成長", "勉強会運営", "勉強会参加"],
-  };
-};
-
-const formatDate = (date: Date) => {
-  return `2018.04.24`;
-};
-
-const formatPrice = (price: number) => {
-  return new Intl.NumberFormat("ja-JP", {
-    currency: "JPY",
-  }).format(price);
-};
+import { useFetchItem } from "@/logics/items";
+import { formatDate, formatPrice } from "@/logics/utils";
 
 const Label = ({ label }) => {
   return (
@@ -43,35 +20,13 @@ const BookPage: NextPage = () => {
     numberOfPages,
     price,
     tags,
-  } = useFetchItem();
+    content,
+  } = useFetchItem().data;
   const circleName = "親方Project";
-  const content = `[技術書典6新刊]勉強会のすべてがわかる本。一般参加から、LT登壇、主催、その後のコミュニティ運営まで。ドキドキわくわくの初参加から、登壇者としての一歩、主催も楽しいよ、いろいろ経験してきた著者20人が送る勉強会ノウハウの決定版。
-
-・勉強会に参加しよう
-　-勉強会って何？-初めての勉強会-
--大規模カンファレンスに参加しよう
-　-懇親会での会話術
-　-学生でもオープンな勉強会に参加しよう
-　-勉強会に参加して何をするのか
-・勉強会に登壇しよう
-　-登壇内容の組み立て方
-　-資料作成方針とテクニック
-　-LT資料を雑に生やす方法
-・勉強会を主催してみよう
-　-小規模勉強会を主催してみよう
-　-スポンサー付き勉強会を開催する
-　-社内勉強会を開催しよう
-　-立ち消えた勉強会
-　-勉強会はコミュニティになる
-　-行動規範
-・こんな勉強会があるよ
-　-主催者から紹介
-　-参加したら面白かった
-　-参加・主催したら世界が広がった`;
 
   return (
     <Layout>
-      <div className="flex justify-between mt-16">
+      <div className="flex justify-between my-16">
         <ItemImage imagePath={imagePath} />
         <section className="max-w-[640px]">
           <div className="text-[#D18921] font-bold">{category}</div>
