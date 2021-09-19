@@ -254,9 +254,10 @@ export const useFetchDistributionById = (
   id: number
 ): FetchedData<Distribution> => {
   const data = [createData1(), ...createData2()];
+  const loading = Number.isNaN(id);
   return {
-    loading: false,
-    error: !!data[id] ? null : { code: 404, message: "Not Found" },
+    loading,
+    error: !!data[id] || loading ? null : { code: 404, message: "Not Found" },
     data: data[id],
   };
 };
