@@ -1,11 +1,13 @@
+import { NextPage } from "next";
 import { useState } from "react";
 import { DistributionView } from "@/parts/distributions";
 import { useFetchDistributions } from "@/logics/distributions";
 import { Header } from "@/parts/header";
+import { Footer } from "@/parts/footer";
 import { Button } from "@/parts/button";
 import { Tab } from "@/parts/tab";
 
-export default function Home() {
+const TopPage: NextPage = () => {
   const [tabIndex, setTabIndex] = useState(0);
   const { data } = useFetchDistributions();
   const tabs = ["すべての本", "Web系", "インフラ", "ハードウェア", "その他"];
@@ -42,6 +44,9 @@ export default function Home() {
         <Tab tabs={tabs} value={tabIndex} onChange={setTabIndex} />
         <DistributionView distributions={data} className="mt-5" />
       </main>
+      <Footer />
     </>
   );
-}
+};
+
+export default TopPage;
