@@ -16,7 +16,7 @@ export const DistributionCell: React.FC<Props> = ({
   const date = formatDate(publishedAt);
   const published = eventName ? `${eventName} (${date})` : date;
   return (
-    <div>
+    <div className="w-[300px]">
       <Link href={path}>
         <a>
           <DistributionImage imagePath={imagePath} />

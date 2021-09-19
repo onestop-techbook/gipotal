@@ -1,6 +1,4 @@
-import Link from "next/link";
 import { VFC } from "react";
-import { Button } from "@/parts/button";
 
 type Props = {
   className?: string;
