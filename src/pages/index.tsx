@@ -1,10 +1,15 @@
+import { useState } from "react";
 import { DistributionView } from "@/parts/distributions";
 import { useFetchDistributions } from "@/logics/distributions";
 import { Header } from "@/parts/header";
 import { Button } from "@/parts/button";
+import { Tab } from "@/parts/tab";
 
 export default function Home() {
+  const [tabIndex, setTabIndex] = useState(0);
   const { data } = useFetchDistributions();
+  const tabs = ["すべての本", "Web系", "インフラ", "ハードウェア", "その他"];
+
   return (
     <>
       <div className="bg-topcover mb-40">
@@ -33,8 +38,9 @@ export default function Home() {
           </div>
         </section>
       </div>
-      <main className="">
-        <DistributionView distributions={data} />
+      <main className="w-[980px] max-w-[980px] mx-auto">
+        <Tab tabs={tabs} value={tabIndex} onChange={setTabIndex} />
+        <DistributionView distributions={data} className="mt-5" />
       </main>
     </>
   );

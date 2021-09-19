@@ -7,6 +7,7 @@ type Props = {
   numberBadge?: number | undefined;
 };
 
+/** 見出し */
 export const Heading: VFC<Props> = ({ children, numberBadge }) => {
   return (
     <h2 className="flex items-center mb-4 first:mt-0 text-2xl font-semibold">

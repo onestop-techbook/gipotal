@@ -6,7 +6,7 @@ type Props = {
   className?: string;
 };
 
-/** ヘッダー */
+/** ページヘッダー */
 export const Header: VFC<Props> = ({ className }) => {
   return (
     <header className={`${className} relative`}>
