@@ -11,22 +11,25 @@
     "codegen": "gql-gen -r dotenv/config"
   },
   "dependencies": {
-    "@apollo/client": "^3.1.1",
+    "@apollo/client": "^3.4.12",
     "@apollo/react-hooks": "^4.0.0",
-    "@graphql-codegen/cli": "^1.17.0",
-    "@graphql-codegen/introspection": "^1.17.0",
-    "@graphql-codegen/typescript": "^1.17.0",
-    "@graphql-codegen/typescript-operations": "^1.17.0",
-    "@graphql-codegen/typescript-react-apollo": "^1.17.0",
-    "@types/react": "^16.9.43",
-    "graphql": "^15.2.0",
-    "hasura-cli": "^1.3.0",
-    "minireset.css": "0.0.6",
-    "next": "^9.5.3",
-    "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "@graphql-codegen/cli": "^2.2.0",
+    "@graphql-codegen/introspection": "^2.1.0",
+    "@graphql-codegen/typescript": "^2.2.2",
+    "@graphql-codegen/typescript-operations": "^2.1.4",
+    "@graphql-codegen/typescript-react-apollo": "^3.1.4",
+    "@types/react": "^17.0.21",
+    "autoprefixer": "^10.3.4",
+    "graphql": "^15.5.3",
+    "hasura-cli": "^2.0.8",
+    "minireset.css": "0.0.7",
+    "next": "^11.1.2",
+    "postcss": "^8.3.6",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "tailwindcss": "^2.2.15"
   },
   "devDependencies": {
-    "typescript": "^3.9.6"
+    "typescript": "^4.4.3"
   }
 }
