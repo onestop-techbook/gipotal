@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { VFC } from "react";
+import { Button } from "@/parts/button";
 
 type Props = {
   className?: string;
@@ -15,16 +16,12 @@ export const Header: VFC<Props> = ({ className }) => {
             <img className={"h-8 relative -l-[2px]"} src="/images/logo.svg" />
           </a>
         </Link>
-        <Link href="/signup">
-          <a className="font-button font-bold text-sm leading-4 py-3 px-6 rounded-3xl text-white bg-black">
-            新規登録
-          </a>
-        </Link>
-        <Link href="/login">
-          <a className="ml-3 font-button font-bold text-sm leading-4 py-3 px-6 rounded-3xl text-black bg-white shadow-lg">
-            ログイン
-          </a>
-        </Link>
+        <Button href="/signup" type="black">
+          新規登録
+        </Button>
+        <Button href="/login" type="white" className="ml-2">
+          ログイン
+        </Button>
       </nav>
     </header>
   );

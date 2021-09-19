@@ -1,7 +1,6 @@
 import React, { VFC } from "react"; // React というでかいすべてを取ってくる
 import { NextPage } from "next"; // NextPage という単体の型を取ってくる
 
-import { NumberBadge } from "@/parts/heading/number-badge";
 import { Layout } from "@/layout";
 import { EventBanner } from "@/parts/event-banner";
 import { Distribution } from "@/logics/distributions";
