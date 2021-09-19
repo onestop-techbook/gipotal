@@ -5,17 +5,21 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "brand": "#ffc107",
+        badge: "#ffc107",
         // 本来はイベントごとに違う色になるはず
-        "event-banner": "#4daf50"
-      }
+        "event-banner": "#4daf50",
+        "gray-right": "#c4c4c4",
+      },
+      spacing: {
+        main: "980px",
+      },
     },
     fontFamily: {
-      "button": ["Roboto"]
-    }
+      button: ["Roboto"],
+    },
   },
   variants: {
     extend: {},
   },
   plugins: [],
-}
+};

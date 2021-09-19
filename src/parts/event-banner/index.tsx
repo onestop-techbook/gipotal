@@ -4,7 +4,7 @@ type Props = {
   event: Event;
 };
 
-export const ItemBanner: React.FC<Props> = ({ event }) => {
+export const EventBanner: React.FC<Props> = ({ event }) => {
   const { name, startAt, endAt, booth } = event;
   return (
     <div className="flex rounded-md mb-2 bg-event-banner text-white">

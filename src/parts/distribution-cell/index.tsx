@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { Item } from "@/logics/items";
-import { ItemImage } from "@/components/item-image";
+import { Distribution } from "@/logics/distributions";
+import { DistributionImage } from "@/parts/distribution-image";
+import { formatDate } from "@/logics/utils";
+type Props = Distribution;
 
-type Props = Item;
-
-export const ItemCell: React.FC<Props> = ({
+/** 頒布物をコンパクトにまとめて表示する */
+export const DistributionCell: React.FC<Props> = ({
   category,
   imagePath,
   title,
@@ -12,15 +13,15 @@ export const ItemCell: React.FC<Props> = ({
   publishedAt,
   path,
 }) => {
-  const date = publishedAt.toLocaleDateString().replace(/\//g, ".");
+  const date = formatDate(publishedAt);
   const published = eventName ? `${eventName} (${date})` : date;
   return (
     <div>
       <Link href={path}>
         <a>
-          <ItemImage imagePath={imagePath} />
+          <DistributionImage imagePath={imagePath} />
           <div className="text-sm leading-4 opacity-80 mt-2">{category}</div>
-          <div className="text-bold text-lg leading-[21px] mt-[2px]">
+          <div className="font-bold text-lg leading-[21px] mt-[2px]">
             {title}
           </div>
           <div className="text-sm leading-4 opacity-60 mt-1">{published}</div>

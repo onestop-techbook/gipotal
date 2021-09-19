@@ -1,7 +1,7 @@
 import { NextPage } from "next";
-import { Layout } from "@/components/layout";
-import { ItemImage } from "@/components/item-image";
-import { useFetchItem } from "@/logics/items";
+import { Layout } from "@/layout";
+import { DistributionImage } from "@/parts/distribution-image";
+import { useFetchDistribution } from "@/logics/distributions";
 import { formatDate, formatPrice } from "@/logics/utils";
 
 const Label = ({ label }) => {
@@ -21,13 +21,13 @@ const BookPage: NextPage = () => {
     price,
     tags,
     content,
-  } = useFetchItem().data;
+  } = useFetchDistribution().data;
   const circleName = "親方Project";
 
   return (
     <Layout>
       <div className="flex justify-between my-16">
-        <ItemImage imagePath={imagePath} />
+        <DistributionImage imagePath={imagePath} />
         <section className="max-w-[640px]">
           <div className="text-[#D18921] font-bold">{category}</div>
           <h1 className="font-bold text-3xl">{title}</h1>

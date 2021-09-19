@@ -1,7 +1,7 @@
 import { FetchedData } from "@/logics";
 
-/** 登録した同人誌 */
-export type Item = {
+/** 頒布物 */
+export type Distribution = {
   /** カテゴリ（ソフトスキルなど）*/
   category: string;
   /** 画像の存在する場所（S3など) */
@@ -24,7 +24,8 @@ export type Item = {
   content: string;
 };
 
-export const useFetchItem = (): FetchedData<Item> => {
+/** 頒布物情報を取得する */
+export const useFetchDistribution = (): FetchedData<Distribution> => {
   const content = `[技術書典6新刊]勉強会のすべてがわかる本。一般参加から、LT登壇、主催、その後のコミュニティ運営まで。ドキドキわくわくの初参加から、登壇者としての一歩、主催も楽しいよ、いろいろ経験してきた著者20人が送る勉強会ノウハウの決定版。
 
 ・勉強会に参加しよう

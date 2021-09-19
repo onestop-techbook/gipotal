@@ -1,10 +1,10 @@
-import { Item } from "@/logics/items";
+import { Distribution } from "@/logics/distributions";
 import { FetchedData } from "@/logics";
 /** サークル情報（頒布物込） */
 export type Circle = {
   name: string;
   description: string;
-  circleItems: Item[];
+  circleItems: Distribution[];
 };
 
 /** サークル情報を ID 指定で取ってくる */

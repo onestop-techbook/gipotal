@@ -1,11 +1,11 @@
 import React, { VFC } from "react"; // React というでかいすべてを取ってくる
 import { NextPage } from "next"; // NextPage という単体の型を取ってくる
 
-import { ItemCell } from "@/components/item-cell";
-import { NumberBadge } from "@/components/number-badge";
-import { Layout } from "@/components/layout";
-import { ItemBanner } from "@/components/item-banner";
-import { Item } from "@/logics/items";
+import { DistributionCell } from "@/parts/distribution-cell";
+import { NumberBadge } from "@/parts/number-badge";
+import { Layout } from "@/layout";
+import { EventBanner } from "@/parts/event-banner";
+import { Distribution } from "@/logics/distributions";
 
 import { useGetCircleById } from "@/logics/circles";
 import { useEvents } from "@/logics/events";
@@ -14,7 +14,7 @@ import { Event } from "@/logics/events";
 type ContentProps = {
   circleName: string;
   circleDesciption: string;
-  items: Item[];
+  items: Distribution[];
 };
 const Content: React.FC<ContentProps> = ({
   circleName,
@@ -33,7 +33,7 @@ const Content: React.FC<ContentProps> = ({
         <ul className="flex flex-wrap justify-between">
           {items.map((item, index) => (
             <li className="mb-8" key={index}>
-              <ItemCell {...item} />
+              <DistributionCell {...item} />
             </li>
           ))}
         </ul>
@@ -54,7 +54,7 @@ type RelatedLinkProps = {
 const RelatedLink: VFC<RelatedLinkProps> = ({ href, label }) => {
   return (
     <li className="list-none underline flex items-center">
-      <figure className="bg-[#C4C4C4] rounded-full h-4 w-4 mr-2" />
+      <figure className="bg-gray-right rounded-full h-4 w-4 mr-2" />
       <a href={href}>{label}</a>
     </li>
   );
@@ -62,13 +62,13 @@ const RelatedLink: VFC<RelatedLinkProps> = ({ href, label }) => {
 
 const Side: React.FC<SideProps> = ({ events }) => {
   return (
-    <div className="w-[310px] min-w-[310px] ml-9">
+    <div className="min-w-[310px] ml-9">
       <h2 className="flex items-center mt-8 mb-4">
         <span className="mr-2 text-2xl font-semibold">参加イベント</span>{" "}
         <NumberBadge value={events.length} />
       </h2>
       {events.map((event) => (
-        <ItemBanner event={event} />
+        <EventBanner event={event} />
       ))}
       <h2 className="mt-8 mr-2 text-2xl font-semibold">
         <span className="mr-2 text-2xl font-semibold">関連リンク</span>
@@ -88,7 +88,7 @@ const Side: React.FC<SideProps> = ({ events }) => {
 type MainProps = {
   circleName: string;
   circleDesciption: string;
-  items: Item[];
+  items: Distribution[];
   events: Event[];
 };
 
