@@ -24,8 +24,7 @@ export type Distribution = {
   content: string;
 };
 
-/** 頒布物情報を取得する */
-export const useFetchDistribution = (): FetchedData<Distribution> => {
+const createData1 = () => {
   const content = `[技術書典6新刊]勉強会のすべてがわかる本。一般参加から、LT登壇、主催、その後のコミュニティ運営まで。ドキドキわくわくの初参加から、登壇者としての一歩、主催も楽しいよ、いろいろ経験してきた著者20人が送る勉強会ノウハウの決定版。
 
 ・勉強会に参加しよう
@@ -61,9 +60,23 @@ export const useFetchDistribution = (): FetchedData<Distribution> => {
     tags: ["勉強会", "成長", "勉強会運営", "勉強会参加"],
     content,
   };
+  return item;
+};
+
+// TODO 何種類かの頒布物取得が必要になる
+/** 頒布物情報を取得する */
+export const useFetchDistributionById = (): FetchedData<Distribution> => {
   return {
     loading: false,
     error: null,
-    data: item,
+    data: createData1(),
+  };
+};
+
+export const useFetchDistributions = (): FetchedData<Distribution[]> => {
+  return {
+    loading: false,
+    error: null,
+    data: [createData1()],
   };
 };

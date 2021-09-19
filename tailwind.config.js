@@ -13,6 +13,9 @@ module.exports = {
       spacing: {
         main: "980px",
       },
+      backgroundImage: {
+        topcover: "url('/images/top-cover.png')",
+      },
     },
     fontFamily: {
       button: ["Roboto"],

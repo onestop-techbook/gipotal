@@ -8,7 +8,7 @@ type Props = {
 export const Layout: VFC<Props> = ({ children }) => {
   return (
     <>
-      <Header />
+      <Header className="shadow" />
       <div className="max-w-[980px] mx-auto">{children}</div>
     </>
   );

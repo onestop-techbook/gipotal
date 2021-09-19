@@ -1,9 +1,14 @@
 import Link from "next/link";
 import { VFC } from "react";
 
-export const Header: VFC = () => {
+type Props = {
+  className?: string;
+};
+
+/** ヘッダー */
+export const Header: VFC<Props> = ({ className }) => {
   return (
-    <header className="shadow relative">
+    <header className={`${className} relative`}>
       <nav className="w-full flex items-center mx-auto py-3 max-w-[980px]">
         <Link href="/">
           <a className="px-2 mr-auto inline-block relative top-[2px]">

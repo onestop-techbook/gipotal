@@ -4,6 +4,7 @@ type Props = {
   event: Event;
 };
 
+/** 参加イベントについてバナー形式で表示する */
 export const EventBanner: React.FC<Props> = ({ event }) => {
   const { name, startAt, endAt, booth } = event;
   return (

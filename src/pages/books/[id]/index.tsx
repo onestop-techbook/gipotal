@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import { Layout } from "@/layout";
-import { DistributionImage } from "@/parts/distribution-image";
-import { useFetchDistribution } from "@/logics/distributions";
+import { DistributionImage } from "@/parts/distributions/image";
+import { useFetchDistributionById } from "@/logics/distributions";
 import { formatDate, formatPrice } from "@/logics/utils";
 
 const Label = ({ label }) => {
@@ -21,7 +21,7 @@ const BookPage: NextPage = () => {
     price,
     tags,
     content,
-  } = useFetchDistribution().data;
+  } = useFetchDistributionById().data;
   const circleName = "親方Project";
 
   return (

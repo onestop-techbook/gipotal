@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Distribution } from "@/logics/distributions";
-import { DistributionImage } from "@/parts/distribution-image";
+import { DistributionImage } from "./image";
 import { formatDate } from "@/logics/utils";
 type Props = Distribution;
 
