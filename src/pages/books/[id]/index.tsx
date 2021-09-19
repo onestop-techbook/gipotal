@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { NextPage } from "next";
 import { Layout } from "@/layout";
 import { DistributionImage } from "@/parts/distributions/image";
@@ -11,6 +12,17 @@ const Label = ({ label }) => {
 };
 
 const BookPage: NextPage = () => {
+  const router = useRouter();
+  const { id } = router.query;
+  const { loading, error, data } = useFetchDistributionById(
+    Number.parseInt(id as string)
+  );
+  console.log(id, loading, error, data);
+
+  if (!id || loading) {
+    return <div>loading now</div>;
+  }
+
   const {
     imagePath,
     title,
@@ -21,7 +33,7 @@ const BookPage: NextPage = () => {
     price,
     tags,
     content,
-  } = useFetchDistributionById().data;
+  } = data;
   const circleName = "親方Project";
 
   return (
@@ -55,7 +67,10 @@ const BookPage: NextPage = () => {
           <pre className="pt-4 whitespace-pre-line">{content}</pre>
           <div className="flex justify-start items-center gap-2 mt-6">
             {tags.map((tag) => (
-              <span className="bg-[#eee] rounded-full font-bold text-sm px-4 py-2">
+              <span
+                className="bg-[#eee] rounded-full font-bold text-sm px-4 py-2"
+                key={tag}
+              >
                 {tag}
               </span>
             ))}

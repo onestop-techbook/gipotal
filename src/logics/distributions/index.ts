@@ -250,11 +250,14 @@ const createData2 = (): Distribution[] => {
 
 // TODO 何種類かの頒布物取得が必要になる
 /** 頒布物情報を取得する */
-export const useFetchDistributionById = (): FetchedData<Distribution> => {
+export const useFetchDistributionById = (
+  id: number
+): FetchedData<Distribution> => {
+  const data = [createData1(), ...createData2()];
   return {
     loading: false,
-    error: null,
-    data: createData1(),
+    error: !!data[id] ? null : { code: 404, message: "Not Found" },
+    data: data[id],
   };
 };
 

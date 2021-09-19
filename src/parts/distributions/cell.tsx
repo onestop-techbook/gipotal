@@ -2,7 +2,11 @@ import Link from "next/link";
 import { Distribution } from "@/logics/distributions";
 import { DistributionImage } from "./image";
 import { formatDate } from "@/logics/utils";
-type Props = Distribution;
+
+type Props = Distribution & {
+  /** 仮のID。実際には uuid にする */
+  id: number;
+};
 
 /** 頒布物をコンパクトにまとめて表示する */
 export const DistributionCell: React.FC<Props> = ({
@@ -11,13 +15,13 @@ export const DistributionCell: React.FC<Props> = ({
   title,
   eventName,
   publishedAt,
-  path,
+  id,
 }) => {
   const date = formatDate(publishedAt);
   const published = eventName ? `${eventName} (${date})` : date;
   return (
     <div className="w-[300px]">
-      <Link href={path}>
+      <Link href={`/books/${id}`}>
         <a>
           <DistributionImage imagePath={imagePath} />
           <div className="text-sm leading-4 opacity-80 mt-2">{category}</div>
