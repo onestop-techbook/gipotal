@@ -17,7 +17,6 @@ const BookPage: NextPage = () => {
   const { loading, error, data } = useFetchDistributionById(
     Number.parseInt(id as string)
   );
-  console.log(id, loading, error, data);
 
   if (!id || loading) {
     return <div>loading now</div>;
@@ -71,7 +70,7 @@ const BookPage: NextPage = () => {
                 className="bg-[#eee] rounded-full font-bold text-sm px-4 py-2"
                 key={tag}
               >
-                {tag}
+                <a href={`/tags/${tag}`}>{tag}</a>
               </span>
             ))}
           </div>

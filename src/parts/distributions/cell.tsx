@@ -3,10 +3,7 @@ import { Distribution } from "@/logics/distributions";
 import { DistributionImage } from "./image";
 import { formatDate } from "@/logics/utils";
 
-type Props = Distribution & {
-  /** 仮のID。実際には uuid にする */
-  id: number;
-};
+type Props = Distribution;
 
 /** 頒布物をコンパクトにまとめて表示する */
 export const DistributionCell: React.FC<Props> = ({

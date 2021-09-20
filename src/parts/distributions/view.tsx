@@ -13,7 +13,7 @@ export const DistributionView: VFC<Props> = ({ className, distributions }) => {
     <ul className={`${className} flex flex-wrap justify-start gap-10`}>
       {distributions.map((dist, index) => (
         <li className="mb-8" key={index}>
-          <DistributionCell {...dist} id={index} />
+          <DistributionCell {...dist} />
         </li>
       ))}
     </ul>

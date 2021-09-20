@@ -3,6 +3,8 @@ import { SAMPLE_DISTRIBUTIONS } from "./sample";
 
 /** 頒布物 */
 export type Distribution = {
+  /** ID */
+  id: string;
   /** カテゴリ（ソフトスキルなど）*/
   category: string;
   /** 画像の存在する場所（S3など) */
@@ -13,8 +15,6 @@ export type Distribution = {
   eventName?: string;
   /** 頒布開始日 */
   publishedAt: Date;
-  /**  */
-  path: string;
   /** ページ数 */
   numberOfPages: number;
   /** 価格 */
@@ -61,6 +61,24 @@ export const useDistributionsByCategories = (
       loading: false,
       error: null,
       data: SAMPLE_DISTRIBUTIONS.filter((dist) => dist.category === category),
+    };
+  }
+};
+
+export const useDistributionsByTags = (
+  tag: string | undefined
+): FetchedData<Distribution[]> => {
+  if (!tag) {
+    return {
+      loading: false,
+      error: null,
+      data: SAMPLE_DISTRIBUTIONS,
+    };
+  } else {
+    return {
+      loading: false,
+      error: null,
+      data: SAMPLE_DISTRIBUTIONS.filter((dist) => dist.tags.includes(tag)),
     };
   }
 };
