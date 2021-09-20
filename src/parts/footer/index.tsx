@@ -7,6 +7,7 @@ type Props = {
 /** ページヘッダー */
 export const Footer: VFC<Props> = ({ className }) => {
   return (
+    // 背景色を変更する場合 `@/base.css` も修正すること
     <footer className={`${className} bg-[#F5F5F5]`}>
       <div className="w-full flex items-center justify-between mx-auto pt-7 py-3 max-w-[980px]">
         <img src="/images/logo-gray.svg" />

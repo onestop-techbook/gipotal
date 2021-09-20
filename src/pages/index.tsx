@@ -1,16 +1,19 @@
 import { NextPage } from "next";
 import { useState } from "react";
 import { DistributionView } from "@/parts/distributions";
-import { useFetchDistributions } from "@/logics/distributions";
+import { useDistributionsByCategories } from "@/logics/distributions";
 import { Header } from "@/parts/header";
 import { Footer } from "@/parts/footer";
 import { Button } from "@/parts/button";
 import { Tab } from "@/parts/tab";
+import { useCategories } from "@/logics/distributions/categories";
 
 const TopPage: NextPage = () => {
   const [tabIndex, setTabIndex] = useState(0);
-  const { data } = useFetchDistributions();
-  const tabs = ["すべての本", "Web系", "インフラ", "ハードウェア", "その他"];
+  const categories = useCategories();
+  const tabs = ["すべての本", ...categories];
+  const currentCategory = tabIndex === 0 ? undefined : tabs[tabIndex];
+  const { data } = useDistributionsByCategories(currentCategory);
 
   return (
     <>
